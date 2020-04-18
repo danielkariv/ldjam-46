@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
@@ -8,6 +8,20 @@ background_mode = 1
 background_color = Color( 0.0470588, 0.0901961, 0.14902, 1 )
 glow_enabled = true
 glow_bicubic_upscale = true
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Panel
+
+func _ready():
+	GameManager.connect(\"health_change\",self,\"_on_GameManager_health_change\")
+	$Value.text = String(\"%3d\" % 100)
+	pass
+
+
+func _on_GameManager_health_change(amount):
+	$Value.text = String(\"%3d\" % amount)
+	pass # Replace with function body.
+"
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends Panel
@@ -59,17 +73,64 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="UILayer/Control"]
+[node name="HealthPanel" type="Panel" parent="UILayer/Control"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 160.0
 margin_bottom = 80.0
+script = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="UILayer/Control/HealthPanel"]
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = 16.0
+text = "HP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="UILayer/Control/HealthPanel"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 6.0
+margin_top = -16.0
+margin_right = -6.0
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "000"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DEBUG_TEST" type="Label" parent="UILayer/Control/HealthPanel"]
+margin_left = 103.147
+margin_top = 66.6681
+margin_right = 143.147
+margin_bottom = 80.6681
+rect_rotation = -37.6
+rect_scale = Vector2( 1.88683, 1.88683 )
+text = "TEST!"
+
+[node name="ScorePanel" type="Panel" parent="UILayer/Control"]
+margin_left = 16.0
+margin_top = 96.343
+margin_right = 160.0
+margin_bottom = 160.343
 script = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="UILayer/Control/Panel"]
+[node name="Title" type="Label" parent="UILayer/Control/ScorePanel"]
 anchor_right = 1.0
 margin_left = 2.0
 margin_top = 2.0
@@ -80,7 +141,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="UILayer/Control/Panel"]
+[node name="Value" type="Label" parent="UILayer/Control/ScorePanel"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -97,7 +158,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DEBUG_TEST" type="Label" parent="UILayer/Control/Panel"]
+[node name="DEBUG_TEST" type="Label" parent="UILayer/Control/ScorePanel"]
 margin_left = 103.147
 margin_top = 66.6681
 margin_right = 143.147

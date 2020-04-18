@@ -78,10 +78,6 @@ player_fire={
 3d_physics/layer_4="Player Bullet"
 3d_physics/layer_5="Enemy Bullet"
 
-[physics]
-
-common/physics_jitter_fix=1.0
-
 [rendering]
 
 threads/thread_model=2

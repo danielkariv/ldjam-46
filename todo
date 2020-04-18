@@ -16,7 +16,14 @@ Ludum Dare 46:
 - Sound Effects:
     * sfxr/bfxr. I can't be picky about it.
 
-
+TODO:
+    * add enemy bullet, and maybe custom attacks ( laser? area attack?)
+    * make player damage-able (by enemy bullet and maybe if player touch them?)
+    * add pickups? health, different shooting style, or some kind of custom special attack
+    * add better enemies movement, and different ones for different enemies
+    * make levels?
+    * need assets, so need to work on it.
+    * sound effects
 
 
 
