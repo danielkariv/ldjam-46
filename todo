@@ -17,8 +17,7 @@ Ludum Dare 46:
     * sfxr/bfxr. I can't be picky about it.
 
 TODO:
-    * add enemy bullet, and maybe custom attacks ( laser? area attack?)
-    * make player damage-able (by enemy bullet and maybe if player touch them?)
+    * maybe enemy custom attacks ( laser? area attack?)
     * add pickups? health, different shooting style, or some kind of custom special attack
     * add better enemies movement, and different ones for different enemies
     * make levels?
