@@ -34,6 +34,7 @@ func _physics_process(delta):
 			bi.translation = translation + rotated_vector
 			bi.direction = rotated_vector
 			bi.speed = 3
+			bi.destroy_timer = 5
 			get_parent().add_child(bi)
 		
 	
