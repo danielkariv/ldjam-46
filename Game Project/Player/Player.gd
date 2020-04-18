@@ -4,7 +4,7 @@ export var bullet_instance : PackedScene
 export var invisible_mat : Material
 
 var speed : float = 128.0
-var drag : float = 64.0
+var drag : float = 128.0
 var MAX_VELOCITY : float = 12.0
 var direction : Vector3
 var velocity : Vector3
@@ -47,11 +47,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x,0,delta*drag)
 	else:
 		velocity.x = move_toward(velocity.x,velocity.x + direction.x*speed,delta*speed)
+	$MeshInstance.rotation_degrees.z = clamp(velocity.x*2,-25,25)
 	if direction.z == 0:
 		velocity.z = move_toward(velocity.z,0,delta*drag)
 	else:
 		velocity.z = move_toward(velocity.z,velocity.z + direction.z*speed,delta*speed)
-	
+	$MeshInstance.rotation_degrees.x = clamp(-velocity.z*2,-5,15)
 	velocity = Vector3(clamp(velocity.x,-MAX_VELOCITY,MAX_VELOCITY),
 					clamp(velocity.y,-MAX_VELOCITY,MAX_VELOCITY),
 					clamp(velocity.z,-MAX_VELOCITY,MAX_VELOCITY))

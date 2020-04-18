@@ -1,5 +1,5 @@
 extends Area
-
+# DEMO ENEMY, SHOULD ONLY EXTEND THIS
 export var bullet_instance : PackedScene 
 
 var colddown : float
