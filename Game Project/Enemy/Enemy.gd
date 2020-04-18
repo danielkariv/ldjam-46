@@ -9,13 +9,15 @@ var damage : int = 5 # self damage to player, not bullet!
 var score_value = 100
 var killed = false
 
+var counter : float = 0
 func _ready():
 	pass
 
 func _physics_process(delta):
 	# Need to figure out math for enemy movement, or just hack it together with animation..
-	translation += Vector3(sin(OS.get_ticks_msec()/100.0)/2,0,-cos(OS.get_ticks_msec()/100.0)/4)
-	
+	#translation += Vector3(sin(OS.get_ticks_msec()/100.0)/2,0,-cos(OS.get_ticks_msec()/100.0)/4)
+	counter = fmod(counter + delta,2*PI)
+	translation += Vector3(sin(counter)/8,0,0)
 	# Shooting Input
 	var is_fire = true
 	if is_fire and colddown < 0:
