@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemy/EnemySideToSide.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/EnemySideToSide.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/Enemy Bullet.tscn" type="PackedScene" id=3]
+
+[node name="Level2" type="Spatial"]
+
+[node name="EnemyS2S" type="Area" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 3 )
+colddown_time = 0.4
+
+[node name="EnemyS2S2" type="Area" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 3 )
+colddown_time = 0.4
+sin_speed = 8
+
+[node name="EnemyS2S3" type="Area" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 3 )
+colddown_time = 0.4
+
+[node name="EnemyS2S4" type="Area" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 3 )
+colddown_time = 0.4
+sin_speed = 8

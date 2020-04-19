@@ -63,6 +63,9 @@ func _physics_process(delta):
 func _on_HitArea_area_entered(area):
 	if invisible_colddown < 0:
 		GameManager.hit_health(area.damage)
+		var random_sound = int(rand_range(1,3))
+		$AudioStreamPlayer.stream = load("res://Sound/Hit_Hurt"+ String(random_sound)+".wav")
+		$AudioStreamPlayer.play()
 		invisible_colddown = invisible_colddown_time
 		$MeshInstance.material_override = invisible_mat
 	pass
@@ -70,7 +73,9 @@ func _on_HitArea_area_entered(area):
 func _on_health_change(amount):
 	if amount == 0:
 		GameManager.player_died()
-		print("dead")
+		visible = false
+		fire_colddown = 5000
+		yield(get_tree().create_timer(1.0), "timeout")
 		queue_free()
 	pass
 

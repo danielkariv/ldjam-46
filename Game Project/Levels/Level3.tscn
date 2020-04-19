@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemy/EnemyShootCircle.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/Enemy Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/EnemyShootCircle.tscn" type="PackedScene" id=3]
+
+[node name="Level3" type="Spatial"]
+
+[node name="EnemySC" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 2 )
+colddown_time = 1.0
+amount = 12
+distance = 1
+
+[node name="EnemySC2" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -13 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 2 )
+colddown_time = 2.0
+amount = 12
+
+[node name="EnemySC3" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, -13 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+bullet_instance = ExtResource( 2 )
+colddown_time = 2.0
+amount = 12

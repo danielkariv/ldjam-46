@@ -13,6 +13,7 @@ var counter : float = 0
 export var amount : int = 5
 var deg : float
 export var distance = 2
+export var speed = 2
 func _ready():
 	pass
 
@@ -26,13 +27,11 @@ func _physics_process(delta):
 	if is_fire and colddown < 0:
 		colddown = colddown_time
 		deg = (PI/(amount-1))
-		print(deg)
 		for i in amount:
 			var bi = bullet_instance.instance()
-			var rotated_vector = Vector3(-1,0,0).rotated(Vector3(0,1,0),deg*i) * distance
-			print(rotated_vector)
-			bi.translation = translation + rotated_vector
-			bi.direction = rotated_vector
+			var rotated_vector = Vector3(-1,0,0).rotated(Vector3(0,1,0),deg*i)
+			bi.translation = translation + rotated_vector * distance
+			bi.direction = rotated_vector * speed
 			bi.speed = 3
 			bi.destroy_timer = 5
 			get_parent().add_child(bi)
@@ -42,10 +41,13 @@ func _physics_process(delta):
 	pass
 
 func _on_HitArea_area_entered(area):
-	print(area.name)
 	if !killed:
 		killed = true # added because sometimes there is double registering by 2 different bullets
 		GameManager.add_score(score_value)
 		area.queue_free()
+		visible = false
+		colddown = 10000
+		$AudioStreamPlayer.play()
+		yield(get_tree().create_timer(1.0), "timeout")
 		queue_free()
 	pass

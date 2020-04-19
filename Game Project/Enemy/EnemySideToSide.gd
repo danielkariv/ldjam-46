@@ -32,10 +32,13 @@ func _physics_process(delta):
 	pass
 
 func _on_HitArea_area_entered(area):
-	print(area.name)
 	if !killed:
 		killed = true # added because sometimes there is double registering by 2 different bullets
 		GameManager.add_score(score_value)
 		area.queue_free()
+		visible = false
+		colddown = 10000
+		$AudioStreamPlayer.play()
+		yield(get_tree().create_timer(1.0), "timeout")
 		queue_free()
 	pass

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemy/EnemyShootCircle.gd" type="Script" id=2]
+[ext_resource path="res://Enemy/EnemyShootCircle.tscn" type="PackedScene" id=3]
+
+[node name="Level1" type="Spatial"]
+
+[node name="EnemySC" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+colddown_time = 2.0
+amount = 10
+distance = 3
+
+[node name="EnemySC2" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -10 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+colddown_time = 0.75
+amount = 3
+
+[node name="EnemySC3" type="Area" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -10 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+colddown_time = 0.75
+amount = 3
